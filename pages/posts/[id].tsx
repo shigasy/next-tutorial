@@ -12,7 +12,11 @@ const fetchNextJsStar = async () => {
   return json.text;
 };
 
-export default function Post({ postData }) {
+export default function Post({
+  postData,
+}: {
+  postData: { date: string; title: string; id: string };
+}) {
   const [hello, setHello] = useState("");
   useEffect(() => {
     (async () => {

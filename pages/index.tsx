@@ -1,12 +1,23 @@
 import Head from "next/head";
-import Layout, { siteTitme } from "../components/layout";
+import Layout, { siteTime } from "../components/layout";
 import Link from "next/link";
 import Date from "../components/date";
 import utilStyles from "../styles/utils.module.css";
 import { getSortedPostsData } from "../lib/posts";
 import fetch from "node-fetch";
+import { GetStaticProps } from "next";
 
-export default function Home({ allPostsData, nextStart }) {
+export default function Home({
+  allPostsData,
+  nextStart,
+}: {
+  allPostsData: {
+    date: string;
+    title: string;
+    id: string;
+  }[];
+  nextStart: number;
+}) {
   return (
     <Layout home>
       <Head>
@@ -44,7 +55,7 @@ export default function Home({ allPostsData, nextStart }) {
   );
 }
 
-export async function getStaticProps() {
+export const getStaticProps: GetStaticProps = async () => {
   const allPostsData = getSortedPostsData();
   const res = await fetch("https://api.github.com/repos/zeit/next.js");
   const json = await res.json();
@@ -55,4 +66,4 @@ export async function getStaticProps() {
       nextStart,
     },
   };
-}
+};

@@ -2,6 +2,7 @@ import Layout from "../../components/layout";
 import { useEffect } from "react";
 import { useState } from "react";
 import fetch from "node-fetch";
+import { GetServerSideProps } from "next";
 
 const fetchNextJsStar = async () => {
   const res = await fetch("http://www.mocky.io/v2/5ed897933100006700c4e577");
@@ -9,7 +10,7 @@ const fetchNextJsStar = async () => {
   return json.hello;
 };
 
-export default function Post({ text }) {
+export default function Post({ text }: { text: string }) {
   const [hello, setHello] = useState("");
   useEffect(() => {
     (async () => {
@@ -27,12 +28,11 @@ export default function Post({ text }) {
   );
 }
 
-export async function getServerSideProps(context) {
-  console.log(context);
+export const getServerSideProps: GetServerSideProps = async (context) => {
   const text = await fetchNextJsStar();
   return {
     props: {
       text,
     }, // will be passed to the page component as props
   };
-}
+};
