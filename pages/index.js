@@ -10,7 +10,7 @@ export default function Home({ allPostsData, nextStart }) {
   return (
     <Layout home>
       <Head>
-        <title>Create Next App</title>
+        <title>Create Next App Test</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <section className={utilStyles.headingMd}>
@@ -37,6 +37,9 @@ export default function Home({ allPostsData, nextStart }) {
           ))}
         </ul>
       </section>
+      <Link href="users/user">
+        <a>user</a>
+      </Link>
     </Layout>
   );
 }
