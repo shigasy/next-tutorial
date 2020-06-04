@@ -3,14 +3,30 @@ import Head from "next/head";
 import { getAllPostIds, getPostData } from "../../lib/posts";
 import Date from "../../components/date";
 import utilStyles from "../../styles/utils.module.css";
+import { useEffect } from "react";
+import { useState } from "react";
+
+const fetchNextJsStar = async () => {
+  const res = await fetch("/api/hello");
+  const json = await res.json();
+  return json.text;
+};
 
 export default function Post({ postData }) {
+  const [hello, setHello] = useState("");
+  useEffect(() => {
+    (async () => {
+      setHello(await fetchNextJsStar());
+    })();
+  }, []);
   return (
     <Layout>
       <Head>
         <title>{postData.title}</title>
       </Head>
       <article>
+        {hello}
+        <hr />
         <h1 className={utilStyles.headingXl}>{postData.title}</h1>
         <div className={utilStyles.lightText}>
           <Date dateString={postData.date} />
