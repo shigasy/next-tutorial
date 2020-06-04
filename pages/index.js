@@ -37,6 +37,9 @@ export default function Home({ allPostsData, nextStart }) {
           ))}
         </ul>
       </section>
+      <Link href="users/user">
+        <a>user</a>
+      </Link>
     </Layout>
   );
 }
