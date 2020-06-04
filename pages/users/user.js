@@ -19,9 +19,9 @@ export default function Post({ text }) {
   return (
     <Layout>
       <article>
-        {hello}
-        {text}
+        <p>useEffectで取得: {hello}</p>
         <hr />
+        <p>SSRで取得: {text}</p>
       </article>
     </Layout>
   );
