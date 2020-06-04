@@ -1,12 +1,12 @@
 import Head from "next/head";
-import Layout, { siteTime } from "../components/layout";
+import Layout from "../components/layout";
 import Link from "next/link";
 import Date from "../components/date";
 import utilStyles from "../styles/utils.module.css";
 import { getSortedPostsData } from "../lib/posts";
 import fetch from "node-fetch";
 import { GetStaticProps } from "next";
-
+import React from "react";
 export default function Home({
   allPostsData,
   nextStart,

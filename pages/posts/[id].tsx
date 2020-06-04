@@ -5,6 +5,7 @@ import Date from "../../components/date";
 import utilStyles from "../../styles/utils.module.css";
 import { useEffect } from "react";
 import { useState } from "react";
+import React from "react";
 
 const fetchNextJsStar = async () => {
   const res = await fetch("/api/hello");
@@ -15,7 +16,7 @@ const fetchNextJsStar = async () => {
 export default function Post({
   postData,
 }: {
-  postData: { date: string; title: string; id: string };
+  postData: { date: string; title: string; id: string; contentHtml: string };
 }) {
   const [hello, setHello] = useState("");
   useEffect(() => {
